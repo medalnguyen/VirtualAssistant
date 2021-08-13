@@ -13,7 +13,7 @@ __all_ = [
 import logging
 import struct
 
-from chunk_test import Chunk
+from chunk import Chunk
 
 try:
     basestring = (type, str)
