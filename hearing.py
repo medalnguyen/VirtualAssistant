@@ -1,6 +1,9 @@
 import speech_recognition as sr
 import warnings
+from translate import Translator
 
+# Initiation
+translator= Translator(to_lang="vi")
 # Ignore any waring message
 warnings.filterwarnings('ignore')
 
@@ -19,7 +22,8 @@ def hearing():
     try:
         text = r.recognize_google(audio_data, language="vi")
     except sr.UnknownValueError:
-        print('Google  Speech Recognition could understand the audio.')
-    except sr.RequestError as e :    
-        print('Request result from Google Speech Recognition service error: ' + e)
+        print('Nhận dạng giọng nói của Google không nghe thấy âm thanh.')
+    except sr.RequestError as e :  
+        translation = translator.translate(e)  
+        print('Yêu cầu kết quả từ lỗi dịch vụ Nhận dạng giọng nói của Google: \n' + translation)
     return text
